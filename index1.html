@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    canvas {
+        display: block;
+        margin: 80px auto;
+        font-size:24px;
+    }
+</style>
+<body>
+<canvas width="400px" height="400px"></canvas>
+</body>
+</html>
+<script>
+    let canvas = document.querySelector('canvas');
+    let ctx = canvas.getContext('2d');
+    let ang = Math.PI / 50;
+    let n = 0;
+    let t = setInterval(move, 50);
+    function move() {
+        ctx.clearRect(0,0,400,400);
+        ctx.beginPath();
+        ctx.arc(200, 200, 100, 0, n * ang);
+        ctx.stroke();
+        n++;
+        ctx.closePath();
+        ctx.font = '24px 微软雅黑';
+        ctx.strokeText(`${n}%`,180,200);
+        if (n > 99) {
+            n = 0;
+        }
+    }
+</script>

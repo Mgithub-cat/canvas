@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    canvas{
+        display: block;
+        margin:50px auto;
+        border:1px solid #000;
+    }
+</style>
+<body>
+<canvas width="300px" height="300px"></canvas>
+</body>
+</html>
+<script>
+    let canvas = document.querySelector('canvas');
+    let ctx = canvas.getContext('2d');
+    poly(5);
+    function poly(num){
+        let r = 100;
+        let ang = 2 * Math.PI / num;
+        ctx.beginPath();
+        ctx.moveTo(150+r,150);
+        for(let i = 0;i < num;i++){
+            let x = 150 + r*Math.cos(ang*i);
+            let y = 150 + r*Math.sin(ang*i);
+            ctx.lineTo(x,y);
+
+            /*let x1 = 150 + (r+50)*Math.cos(ang*i);
+            let y1 = 150 + (r+50)*Math.sin(ang*i);
+            ctx.lineTo(x1,y1);*/
+        }
+        ctx.closePath();
+        ctx.stroke();
+    }
+</script>
